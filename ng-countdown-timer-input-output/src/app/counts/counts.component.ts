@@ -14,7 +14,12 @@ export class CountsComponent implements OnInit {
   constructor() { }
 
   ngOnChanges(changes: SimpleChange){
-    if(this.pausecountvalue)
+    if(this.pausecountvalue == 'reset')
+    {
+      this.pausecount=0;
+      this.startcount=0;
+    }
+    else if(this.pausecountvalue)
     this.pausecount++;
     else if(this.startcountvalue)
     this.startcount++;

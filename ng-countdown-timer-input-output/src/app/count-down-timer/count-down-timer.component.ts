@@ -14,13 +14,7 @@ export class CountDownTimerComponent implements OnInit {
   @Output() displayemitter;
 
   isTimerActive = false;
-  state = {
-    startcount: 0,
-    pausecount: 0,
-    log: ""
-  };
-  displaystate
-  
+
   constructor() { 
     this.evtemitter = new EventEmitter();
     this.displayemitter = new EventEmitter();
@@ -60,6 +54,12 @@ export class CountDownTimerComponent implements OnInit {
   reset(){
 
     this.displayemitter.emit(0);
+    this.evtemitter.emit({
+      startcount: 'reset',
+      pausecount: 'reset',
+      log: `reset`
+    });
+
 
   }
 }

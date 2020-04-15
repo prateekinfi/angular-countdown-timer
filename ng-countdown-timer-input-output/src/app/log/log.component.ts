@@ -14,7 +14,9 @@ export class LogComponent {
   constructor() { }
   ngOnChanges(changes:SimpleChanges){
    console.log(changes.logvalue.currentValue);
-   if(changes.logvalue.currentValue)
+   if(changes.logvalue.currentValue == 'reset')
+   this.logs = [];
+   else if(changes.logvalue.currentValue)
    this.logs.push(changes.logvalue.currentValue);
   }
 

@@ -1,3 +1,4 @@
+import { TimerService } from './../timer.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,13 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./log.component.css']
 })
 export class LogComponent implements OnInit {
+  constructor(private service : TimerService) { }
 
   logs : string[]= [];
   logvalue :string;
 
-  constructor() { }
-
   ngOnInit(): void {
+    this.service.emitter.subscribe((e:Object)=>{
+        if(!e.hasOwnProperty('displayvalue')){
+          this.logs.push(e['log']);
+          console.log(this.logs);
+          if(e['log']=='reset')
+          this.logs=[];
+        }
+    })
   }
 
 }
