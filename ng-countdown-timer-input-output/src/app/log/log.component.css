@@ -1,0 +1,17 @@
+li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+}
+
+.logs-container {
+    /* display: inline-block; */
+    text-align: center;
+    font-size: 12px;
+    /* width: 30%; */
+    min-height: 200px;
+    padding: 10px;
+    /* border: 1px solid black; */
+}
