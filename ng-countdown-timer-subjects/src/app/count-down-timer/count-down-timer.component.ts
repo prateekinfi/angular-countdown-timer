@@ -24,33 +24,13 @@ export class CountDownTimerComponent implements OnInit {
       tap(()=>timervalue--)
     ).subscribe(()=>{
       console.log(timervalue);
-      this.service.emitter.next({"displayvalue": timervalue});
+      this.service.updateDisplay(timervalue);
     })
-
-    let action = (this.isTimerActive) ? "started" : "paused";
-    var d = new Date();
-    var time = d.getDate()  + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + " " +
-    d.getHours() + ":" + d.getMinutes();
-    let count = (this.isTimerActive) ? "startcount" : "pausecount";
-    let eventObj ={
-      startcount: 0,
-      pausecount: 0,
-      log: `${action} at ${time}`
-    };
-    eventObj[count]++
-
-    this.service.emitter.next(eventObj)
-
+    this.service.updateCounts(this.isTimerActive);
+    this.service.updateLogs(this.isTimerActive);
   }
 
   reset(){
-    this.service.emitter.next({"displayvalue": 0});
-    this.service.emitter.next({
-      startcount: 'reset',
-      pausecount: 'reset',
-      log: `reset`
-    });
+    this.service.reset();
   }
-
-
 }

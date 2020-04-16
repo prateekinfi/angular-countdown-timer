@@ -12,9 +12,7 @@ export class CountDownDisplayComponent implements OnInit {
   displayvalue: number = 0;
   ngOnInit(): void {
     this.service.emitter.subscribe((e: Object) => {
-      if (e.hasOwnProperty('displayvalue')) {
-        this.displayvalue = e['displayvalue']
-      }
+      this.displayvalue = e['displayValue']
     })
   }
 

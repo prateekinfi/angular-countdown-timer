@@ -14,12 +14,7 @@ export class LogComponent implements OnInit {
 
   ngOnInit(): void {
     this.service.emitter.subscribe((e:Object)=>{
-        if(!e.hasOwnProperty('displayvalue')){
-          this.logs.push(e['log']);
-          console.log(this.logs);
-          if(e['log']=='reset')
-          this.logs=[];
-        }
+          this.logs= e['logs'];
     })
   }
 
